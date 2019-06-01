@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: api-rest
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Gabriel
+Built-By: Daniel
 Implementation-Vendor-Id: com.produtos
-Build-Jdk: 1.8.0_202
+Build-Jdk: 1.8.0_211
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/api-rest
 Created-By: Maven Integration for Eclipse
