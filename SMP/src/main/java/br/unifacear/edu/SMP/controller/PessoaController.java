@@ -25,7 +25,6 @@ public class PessoaController {
 	
 	@GetMapping("/pessoas")
 	public List<Pessoa> listaPessoas(){
-		System.out.println("listando pessoas");
 		return pessoaRepository.findAll();
 	}
 	
