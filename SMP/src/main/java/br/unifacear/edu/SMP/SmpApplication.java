@@ -9,5 +9,6 @@ public class SmpApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SmpApplication.class, args);
+		System.out.println("");
 	}
 }
