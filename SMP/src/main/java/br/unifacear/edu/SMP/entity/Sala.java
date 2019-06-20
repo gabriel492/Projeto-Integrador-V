@@ -32,6 +32,14 @@ public class Sala  implements Serializable{
 		
 	}
 	
+	public Integer getNumerosala() {
+		return numerosala;
+	}
+	
+    public void setNumerosala(Integer numerosala) {
+		this.numerosala = numerosala;
+	}
+
 	public long getId() {
 		return id;
 	}

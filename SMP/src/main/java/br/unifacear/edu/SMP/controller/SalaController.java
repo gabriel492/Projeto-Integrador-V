@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,12 @@ public class SalaController {
 	}
 	
 	@GetMapping("/sala/{id}")
-	public Sala listarPessoa(@PathVariable(value="id")long id) {
+	public Sala listarSalaId(@PathVariable(value="id")long id) {
 		return salarepository.findById(id);
 	}
 	
 	@GetMapping("/sala/{select}/{menssage}")
-	public List<Sala> listarPessoa(@PathVariable(value="select")String select,@PathVariable(value="menssage")String str) {
+	public List<Sala> listarSalaFiltro(@PathVariable(value="select")String select,@PathVariable(value="menssage")String str) {
 		salarepository.findAll();
 		List<Sala> list = new ArrayList<Sala>();
 		if(select.equals("1")) {
@@ -57,16 +58,18 @@ public class SalaController {
 			for (Sala sala : salarepository.findAll()) {				
 				if(sala.getAndar().equals(str)) {
 					list.add(sala);
-					return list;				
+									
 				}	
 			}
+			return list;
 		}else if(select.equals("3")) {
 			for (Sala sala : salarepository.findAll()) {
 				if(sala.getBloco().equals(str)) {
 					list.add(sala);
-					return list;				
+									
 				}	
 			}
+			return list;	
 		}
 		return null;
 	}
@@ -80,13 +83,16 @@ public class SalaController {
 		System.out.println(cont);
 		try {
 			 OutputStream f = new FileOutputStream("C:\\www\\smp\\src\\assets\\sala"+sala.getNumeroSala()+".png");
-			 sala.setImagem("C:\\www\\smp\\src\\assets\\sala"+sala.getNumeroSala()+".png");
+		
 			 ByteArrayOutputStream out = QRCode.from(""+cont)
 						.to(ImageType.PNG)
 						.withSize(size, size)
 						.stream();
 			
+			String encodedFile = Base64.getEncoder().encodeToString(out.toByteArray());
+			sala.setImagem(encodedFile);
 			f.write(out.toByteArray());
+			
 			f.close();
 			
 		} catch (IOException e) {

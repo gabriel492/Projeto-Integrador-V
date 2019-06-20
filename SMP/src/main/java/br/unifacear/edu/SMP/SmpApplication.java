@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SmpApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SmpApplication.class, args);
-		System.out.println("");
+		SpringApplication.run(SmpApplication.class, args);	
 	}
 }

@@ -18,21 +18,23 @@ public class Chamado implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+	private long id_sala;
     private String data;
     private String nome;
     private String titulo;
     private String descricao;
-    private Integer numero;
+    private String numero;
+    private String situacao;
 
 
     public Chamado() {
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -86,4 +88,20 @@ public class Chamado implements Serializable{
                 ", descricao='" + descricao + '\'' +
                 '}';
     }
+
+	public long getId_sala() {
+		return id_sala;
+	}
+
+	public void setId_sala(long id_sala) {
+		this.id_sala = id_sala;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
 }
