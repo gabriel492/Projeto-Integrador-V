@@ -34,9 +34,16 @@ public class PessoaController {
 	}
 	
 	
-	@PostMapping("/pessoa")
-	public Pessoa salvaPessoa(@RequestBody @Valid Pessoa Pessoa) {
-		return pessoaRepository.save(Pessoa);
+	@PostMapping("/login")
+	public Pessoa loginPessoa(@RequestBody @Valid Pessoa Pessoa) {
+		for (Pessoa p : pessoaRepository.findAll()) {
+			if(p.getlogin().equals(Pessoa.getlogin()) && p.getSenha().equals(Pessoa.getSenha())) {
+				System.out.println("teste");
+				return p;
+			}
+				
+		}			
+		return null;
 	}
 	
 	

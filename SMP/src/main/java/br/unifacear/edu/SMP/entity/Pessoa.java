@@ -29,38 +29,25 @@ public class Pessoa implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long id;
 	@NotNull
-	private String nome;
-	@NotNull
-	private String usuario;
+	private String login;
 	@NotNull
 	private String senha;
 	
 	public Pessoa() {
 		
 	}
-	
-	
 	public long getId() {
 		return id;
 	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
 
-
-
-	public String getNome() {
-		return nome;
+	public String getlogin() {
+		return login;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setlogin(String login) {
+		this.login = login;
 	}
 	public String getSenha() {
 		return senha;
