@@ -82,7 +82,7 @@ public class SalaController {
 		cont = cont +1;
 		System.out.println(cont);
 		try {
-			 OutputStream f = new FileOutputStream("C:\\www\\smp\\src\\assets\\sala"+sala.getNumeroSala()+".png");
+			 OutputStream f = new FileOutputStream("C:\\www\\smries\\src\\assets\\sala"+sala.getNumeroSala()+".png");
 		
 			 ByteArrayOutputStream out = QRCode.from(""+cont)
 						.to(ImageType.PNG)

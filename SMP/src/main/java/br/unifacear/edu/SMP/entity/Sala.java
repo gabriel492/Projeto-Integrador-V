@@ -29,10 +29,9 @@ public class Sala  implements Serializable{
 	private String imagem;
 	
 	public Sala() {
-		
 	}
 	
-	public Integer getNumerosala() {
+	public Integer getNumeroSala() {
 		return numerosala;
 	}
 	
@@ -67,10 +66,6 @@ public class Sala  implements Serializable{
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
-	}
-
-	public Integer getNumeroSala() {
-		return numerosala;
 	}
 
 	public void setNumeroSala(Integer numeroSala) {

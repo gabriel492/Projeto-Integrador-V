@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.unifacear.edu.SMP.entity.Chamado;
 import br.unifacear.edu.SMP.entity.Sala;
 import br.unifacear.edu.SMP.repository.ChamadoRepository;
+import br.unifacear.edu.SMP.repository.SalaRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,11 +24,26 @@ public class ChamadoController {
 	
 	@Autowired
 	ChamadoRepository chamadoRepository;
-	
+	@Autowired
+	SalaRepository salarepository;
 	
 	@GetMapping("/chamados")
 	public List<Chamado> listachamados(){
-		return chamadoRepository.findAll();
+		List<Chamado> list = new ArrayList<Chamado>();
+		
+	
+		for (Chamado chamado : chamadoRepository.findAll()) {
+			if(chamado.getSituacao().equals("pendente")) {
+				list.add(chamado);
+			}
+		}
+		for (Chamado chamado : chamadoRepository.findAll()) {
+			if(chamado.getSituacao().equals("finalizado")) {
+				list.add(chamado);
+			}
+		}
+		
+		return list;
 	}
 	
 	@GetMapping("/chamado/{id}")
@@ -55,7 +71,7 @@ public class ChamadoController {
 			}
 		}else if(select.equals("3")) {
 			for (Chamado chamado : chamadoRepository.findAll()) {
-				if(str.equals("aberto")) {
+				if(str.equals("pendente")) {
 					if(chamado.getSituacao().equals("pendente")) {
 						list.add(chamado);
 					}
@@ -73,6 +89,14 @@ public class ChamadoController {
 	
 	@PostMapping("/chamado")
 	public Chamado salvachamado(@RequestBody @Valid Chamado chamado) {
+		chamado.setSituacao("pendente");
+		long n1 = chamado.getId_sala();
+		Sala sala = new Sala();
+		sala = salarepository.findById(n1);
+		chamado.setId_sala(sala.getNumeroSala());
+		long n2 = chamadoRepository.findAll().size()+1;
+		chamado.setId(n2);
+		
 		return chamadoRepository.save(chamado);
 	}
 	

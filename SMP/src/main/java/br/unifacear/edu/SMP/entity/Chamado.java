@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "chamado")
@@ -16,13 +17,18 @@ public class Chamado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+	@NotNull
 	private long id_sala;
+	@NotNull
     private String data;
+	@NotNull
     private String nome;
+	@NotNull
     private String titulo;
+	@NotNull
     private String descricao;
+	@NotNull
     private String numero;
     private String situacao;
 
